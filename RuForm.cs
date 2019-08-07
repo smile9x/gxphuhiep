@@ -18,7 +18,7 @@ namespace RuForm1
 
     public partial class RuForm1 : Form
     {
-        
+
 
         public RuForm1()
         {
@@ -178,16 +178,23 @@ namespace RuForm1
                     connection.Open();
                 }
 
-                String strGetAll = "select * from [TOAN XU]";
-                OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(strGetAll, connection);
-                DataTable dataTable = new DataTable();
-                oleDbDataAdapter.Fill(dataTable);
+                loadAllData();
                 gbKetQuaTimDuoc.Text = "Kết quả tìm được: " + dataTable.Rows.Count;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     lbKetQua.Items.Add(new Item(row["ID"].ToString(), row["HO"] + " " + row["TEN"]));
                 }
             }
+        }
+
+        DataTable dataTable = new DataTable();
+
+        private DataTable loadAllData()
+        {
+            String strGetAll = "select * from [TOAN XU]";
+            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(strGetAll, connection);            
+            oleDbDataAdapter.Fill(dataTable);
+            return dataTable;
         }
 
         private OleDbConnection connection;
@@ -238,7 +245,7 @@ namespace RuForm1
                 key = key.ToUpper();
                 int type = getType();
                 lbKetQua.Items.Clear();
-                
+
                 String strSearch = null;
                 OleDbCommand command = null;
 
@@ -297,6 +304,15 @@ namespace RuForm1
                     lbKetQua.Items.Add(new Item(row["ID"].ToString(), row["HO"] + " " + row["TEN"]));
                 }
             }
+            else
+            {
+                gbKetQuaTimDuoc.Text = "Kết quả tìm được: " + dataTable.Rows.Count;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    lbKetQua.Items.Add(new Item(row["ID"].ToString(), row["HO"] + " " + row["TEN"]));
+                }
+            }
+
         }
 
         private int getType()
@@ -333,7 +349,7 @@ namespace RuForm1
             oleDbCommand.Parameters.AddWithValue("@ID", id);
             OleDbDataReader row = oleDbCommand.ExecuteReader();
             //foreach (DataRow row in result.Rows)
-            while(row.Read())
+            while (row.Read())
             {
                 //if (row["ID"].ToString().Equals(id))
                 {
@@ -367,6 +383,7 @@ namespace RuForm1
             bLuu.Enabled = false;
             lbTrangThai.Text = "Thông tin: " + tbHoTen.Text;
             enableTaoMoi = false;
+            enableAllTexbox();
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
@@ -392,35 +409,6 @@ namespace RuForm1
             if (enableSave)
             {
                 OleDbCommand command = new OleDbCommand();
-
-                //OleDbCommand command = new OleDbCommand(@"UPDATE [TOAN XU]
-                //                                    SET [TEN THANH] = @TEN_THANH,
-                //                                        [HO] = @HO,
-                //                                        [TEN] = @TEN,
-                //                                        [NAM SINH] = @NAM_SINH,
-                //                                        [NOI SINH] = @NOI_SINH,
-                //                                        [NGAY RT] = @NGAY_RT,
-                //                                        [LM RT] = @LM_RT,
-                //                                        [DODAU RT] = @DODAU_RT,
-                //                                        [NOI RT] = @NOI_RT,
-                //                                        [NGAY XTLD] = @NGAY_XTLD,
-                //                                        [NOI XTLD] = @NOI_XTLD,
-                //                                        [NGAY TS] = @NGAY_TS,
-                //                                        [NOI TS] = @NOI_TS,
-                //                                        [LM TS] = @LM_TS,
-                //                                        [DODAU TS] = @DODAU_TS,
-                //                                        [TEN CHA] = @TEN_CHA,
-                //                                        [TEN ME] = @TEN_ME,
-                //                                        [HO GIAO] = @HO_GIAO,
-                //                                        [NGAY HP] = @NGAY_HP,
-                //                                        [NOI HP] = @NOI_HP,
-                //                                        [PHOI NGAU] = @PHOI_NGAU,
-                //                                        [LM CHUNGHON] = @LM_CHUNGHON,
-                //                                        [NGUOI LC] = @NGUOI_LC,
-                //                                        [NGAY CHET] = @NGAY_CHET,
-                //                                        [CHUC VU] = @CHUC_VU,
-                //                                        [GHI CHU] = @GHI_CHU
-                //                                    WHERE [ID] = @ID", connection);
 
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
@@ -466,7 +454,7 @@ namespace RuForm1
                                                         [NGAY CHET] = @NGAY_CHET,
                                                         [CHUC VU] = @CHUC_VU,
                                                         [GHI CHU] = @GHI_CHU
-                                                    WHERE [ID] = @ID";                    
+                                                    WHERE [ID] = @ID";
                 }
 
                 command.Parameters.AddWithValue("@TEN_THANH", tbTenThanh.Text == "" ? " " : tbTenThanh.Text);
@@ -498,13 +486,17 @@ namespace RuForm1
                 command.Parameters.AddWithValue("@NGAY_CHET", tbNgayChet.Text == "" ? " " : tbNgayChet.Text);
                 command.Parameters.AddWithValue("@CHUC_VU", tbChucVu.Text == "" ? " " : tbChucVu.Text);
                 command.Parameters.AddWithValue("@GHI_CHU", rtbGhiChu.Text == "" ? " " : rtbGhiChu.Text);
-                command.Parameters.AddWithValue("@ID", ((Item)lbKetQua.SelectedItem).Id);
+
+                if (!enableTaoMoi) {
+                    command.Parameters.AddWithValue("@ID", ((Item)lbKetQua.SelectedItem).Id);
+                }
 
 
                 command.ExecuteNonQuery();
 
                 lbTrangThai.Text = "Trạng thái: Lưu thành công.";
             }
+            loadAllData();
         }
 
         private void RuForm1_FormClosing(object sender, FormClosingEventArgs e)
@@ -543,8 +535,46 @@ namespace RuForm1
             enableTaoMoi = true;
             tbTenThanh.Focus();
             lbTrangThai.Text = "Trạng thái: Đang tạo mới.";
+            enableAllTexbox();
+        }
+
+        private void enableAllTexbox() 
+        {
+            tbTenThanh.Enabled = true;
+            tbHoTen.Enabled = true;
+            tbNamSinh.Enabled = true;
+            tbNoiSinh.Enabled = true;
+            tbNgayRuaToi.Enabled = true;
+            tbLinhMucRuaToi.Enabled = true;
+            tbDoDauRuaToi.Enabled = true;
+            tbNoiRuaToi.Enabled = true;
+            tbNgayXungToiLanDau.Enabled = true;
+            tbNoiXungToiLanDau.Enabled = true;
+            tbNgayThemSuc.Enabled = true;
+            tbNoiThemSuc.Enabled = true;
+            tbLinhMucThemSuc.Enabled = true;
+            tbDoDauThemSuc.Enabled = true;
+            tbHoTenCha.Enabled = true;
+            tbHoTenMe.Enabled = true;
+            tbGiaoHo.Enabled = true;
+            tbNgayKetHon.Enabled = true;
+            tbNoiKetHon.Enabled = true;
+            tbKetHonVoi.Enabled = true;
+            tbLinhMucChungHon.Enabled = true;
+            tbNguoiLamChung.Enabled = true;
+            tbNgayChet.Enabled = true;
+            tbChucVu.Enabled = true;
+            rtbGhiChu.Enabled = true;
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (tbSearch.Text == "")
+                search(tbSearch.Text);
         }
     }
+
+
 
     public class Item
     {

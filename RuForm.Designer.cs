@@ -119,6 +119,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(184, 29);
             this.tbSearch.TabIndex = 0;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // bTimKiem
@@ -299,6 +300,7 @@
             // 
             // tbTenThanh
             // 
+            this.tbTenThanh.Enabled = false;
             this.tbTenThanh.Location = new System.Drawing.Point(145, 17);
             this.tbTenThanh.Name = "tbTenThanh";
             this.tbTenThanh.Size = new System.Drawing.Size(203, 20);
@@ -317,6 +319,7 @@
             // 
             // rtbGhiChu
             // 
+            this.rtbGhiChu.Enabled = false;
             this.rtbGhiChu.Location = new System.Drawing.Point(397, 377);
             this.rtbGhiChu.Name = "rtbGhiChu";
             this.rtbGhiChu.Size = new System.Drawing.Size(319, 128);
@@ -327,6 +330,7 @@
             // 
             // tbChucVu
             // 
+            this.tbChucVu.Enabled = false;
             this.tbChucVu.Location = new System.Drawing.Point(513, 341);
             this.tbChucVu.Name = "tbChucVu";
             this.tbChucVu.Size = new System.Drawing.Size(203, 20);
@@ -336,6 +340,7 @@
             // 
             // tbNgayKetHon
             // 
+            this.tbNgayKetHon.Enabled = false;
             this.tbNgayKetHon.Location = new System.Drawing.Point(513, 125);
             this.tbNgayKetHon.Name = "tbNgayKetHon";
             this.tbNgayKetHon.Size = new System.Drawing.Size(100, 20);
@@ -345,6 +350,7 @@
             // 
             // tbNgayChet
             // 
+            this.tbNgayChet.Enabled = false;
             this.tbNgayChet.Location = new System.Drawing.Point(513, 305);
             this.tbNgayChet.Name = "tbNgayChet";
             this.tbNgayChet.Size = new System.Drawing.Size(100, 20);
@@ -354,6 +360,7 @@
             // 
             // tbHoTenCha
             // 
+            this.tbHoTenCha.Enabled = false;
             this.tbHoTenCha.Location = new System.Drawing.Point(513, 18);
             this.tbHoTenCha.Name = "tbHoTenCha";
             this.tbHoTenCha.Size = new System.Drawing.Size(203, 20);
@@ -363,6 +370,7 @@
             // 
             // tbHoTenMe
             // 
+            this.tbHoTenMe.Enabled = false;
             this.tbHoTenMe.Location = new System.Drawing.Point(513, 53);
             this.tbHoTenMe.Name = "tbHoTenMe";
             this.tbHoTenMe.Size = new System.Drawing.Size(203, 20);
@@ -372,6 +380,7 @@
             // 
             // tbGiaoHo
             // 
+            this.tbGiaoHo.Enabled = false;
             this.tbGiaoHo.Location = new System.Drawing.Point(513, 89);
             this.tbGiaoHo.Name = "tbGiaoHo";
             this.tbGiaoHo.Size = new System.Drawing.Size(203, 20);
@@ -381,6 +390,7 @@
             // 
             // tbNguoiLamChung
             // 
+            this.tbNguoiLamChung.Enabled = false;
             this.tbNguoiLamChung.Location = new System.Drawing.Point(513, 269);
             this.tbNguoiLamChung.Name = "tbNguoiLamChung";
             this.tbNguoiLamChung.Size = new System.Drawing.Size(203, 20);
@@ -390,6 +400,7 @@
             // 
             // tbNoiKetHon
             // 
+            this.tbNoiKetHon.Enabled = false;
             this.tbNoiKetHon.Location = new System.Drawing.Point(513, 161);
             this.tbNoiKetHon.Name = "tbNoiKetHon";
             this.tbNoiKetHon.Size = new System.Drawing.Size(203, 20);
@@ -399,6 +410,7 @@
             // 
             // tbKetHonVoi
             // 
+            this.tbKetHonVoi.Enabled = false;
             this.tbKetHonVoi.Location = new System.Drawing.Point(513, 197);
             this.tbKetHonVoi.Name = "tbKetHonVoi";
             this.tbKetHonVoi.Size = new System.Drawing.Size(203, 20);
@@ -408,6 +420,7 @@
             // 
             // tbLinhMucChungHon
             // 
+            this.tbLinhMucChungHon.Enabled = false;
             this.tbLinhMucChungHon.Location = new System.Drawing.Point(513, 233);
             this.tbLinhMucChungHon.Name = "tbLinhMucChungHon";
             this.tbLinhMucChungHon.Size = new System.Drawing.Size(203, 20);
@@ -417,6 +430,7 @@
             // 
             // tbNgayRuaToi
             // 
+            this.tbNgayRuaToi.Enabled = false;
             this.tbNgayRuaToi.Location = new System.Drawing.Point(145, 161);
             this.tbNgayRuaToi.Name = "tbNgayRuaToi";
             this.tbNgayRuaToi.Size = new System.Drawing.Size(100, 20);
@@ -426,6 +440,7 @@
             // 
             // tbNgayXungToiLanDau
             // 
+            this.tbNgayXungToiLanDau.Enabled = false;
             this.tbNgayXungToiLanDau.Location = new System.Drawing.Point(145, 305);
             this.tbNgayXungToiLanDau.Name = "tbNgayXungToiLanDau";
             this.tbNgayXungToiLanDau.Size = new System.Drawing.Size(100, 20);
@@ -435,6 +450,7 @@
             // 
             // tbNgayThemSuc
             // 
+            this.tbNgayThemSuc.Enabled = false;
             this.tbNgayThemSuc.Location = new System.Drawing.Point(145, 377);
             this.tbNgayThemSuc.Name = "tbNgayThemSuc";
             this.tbNgayThemSuc.Size = new System.Drawing.Size(100, 20);
@@ -444,6 +460,7 @@
             // 
             // tbNamSinh
             // 
+            this.tbNamSinh.Enabled = false;
             this.tbNamSinh.Location = new System.Drawing.Point(145, 89);
             this.tbNamSinh.Name = "tbNamSinh";
             this.tbNamSinh.Size = new System.Drawing.Size(100, 20);
@@ -543,6 +560,7 @@
             // 
             // tbNoiSinh
             // 
+            this.tbNoiSinh.Enabled = false;
             this.tbNoiSinh.Location = new System.Drawing.Point(145, 125);
             this.tbNoiSinh.Name = "tbNoiSinh";
             this.tbNoiSinh.Size = new System.Drawing.Size(203, 20);
@@ -552,6 +570,7 @@
             // 
             // tbDoDauThemSuc
             // 
+            this.tbDoDauThemSuc.Enabled = false;
             this.tbDoDauThemSuc.Location = new System.Drawing.Point(145, 485);
             this.tbDoDauThemSuc.Name = "tbDoDauThemSuc";
             this.tbDoDauThemSuc.Size = new System.Drawing.Size(203, 20);
@@ -561,6 +580,7 @@
             // 
             // tbLinhMucThemSuc
             // 
+            this.tbLinhMucThemSuc.Enabled = false;
             this.tbLinhMucThemSuc.Location = new System.Drawing.Point(145, 449);
             this.tbLinhMucThemSuc.Name = "tbLinhMucThemSuc";
             this.tbLinhMucThemSuc.Size = new System.Drawing.Size(203, 20);
@@ -570,6 +590,7 @@
             // 
             // tbNoiThemSuc
             // 
+            this.tbNoiThemSuc.Enabled = false;
             this.tbNoiThemSuc.Location = new System.Drawing.Point(145, 413);
             this.tbNoiThemSuc.Name = "tbNoiThemSuc";
             this.tbNoiThemSuc.Size = new System.Drawing.Size(203, 20);
@@ -579,6 +600,7 @@
             // 
             // tbNoiXungToiLanDau
             // 
+            this.tbNoiXungToiLanDau.Enabled = false;
             this.tbNoiXungToiLanDau.Location = new System.Drawing.Point(145, 341);
             this.tbNoiXungToiLanDau.Name = "tbNoiXungToiLanDau";
             this.tbNoiXungToiLanDau.Size = new System.Drawing.Size(203, 20);
@@ -588,6 +610,7 @@
             // 
             // tbNoiRuaToi
             // 
+            this.tbNoiRuaToi.Enabled = false;
             this.tbNoiRuaToi.Location = new System.Drawing.Point(145, 269);
             this.tbNoiRuaToi.Name = "tbNoiRuaToi";
             this.tbNoiRuaToi.Size = new System.Drawing.Size(203, 20);
@@ -597,6 +620,7 @@
             // 
             // tbDoDauRuaToi
             // 
+            this.tbDoDauRuaToi.Enabled = false;
             this.tbDoDauRuaToi.Location = new System.Drawing.Point(145, 233);
             this.tbDoDauRuaToi.Name = "tbDoDauRuaToi";
             this.tbDoDauRuaToi.Size = new System.Drawing.Size(203, 20);
@@ -606,6 +630,7 @@
             // 
             // tbLinhMucRuaToi
             // 
+            this.tbLinhMucRuaToi.Enabled = false;
             this.tbLinhMucRuaToi.Location = new System.Drawing.Point(145, 197);
             this.tbLinhMucRuaToi.Name = "tbLinhMucRuaToi";
             this.tbLinhMucRuaToi.Size = new System.Drawing.Size(203, 20);
@@ -615,6 +640,7 @@
             // 
             // tbHoTen
             // 
+            this.tbHoTen.Enabled = false;
             this.tbHoTen.Location = new System.Drawing.Point(145, 53);
             this.tbHoTen.Name = "tbHoTen";
             this.tbHoTen.Size = new System.Drawing.Size(203, 20);
